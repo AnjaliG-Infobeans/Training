@@ -1,0 +1,39 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "quotes": [
+            2,
+            "single",
+            {
+                "avoidEscape": true,
+                "allowTemplateLiterals": true
+            }
+        ],
+        "no-empty-function": "error",
+        "semi": "warn",
+        "semi-spacing": [
+            "warn",
+            {
+                "before": false
+            }
+        ],
+        "curly": [
+            "error",
+            "multi-or-nest"
+        ],
+        "brace-style": [
+            "warn",
+            {"allowSingleLine": true}
+        ]
+    }
+}
