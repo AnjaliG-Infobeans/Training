@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  padding: 10px;
+}
+h2 {
+  padding-left: 30px;
+  font-size: xx-large;
+  text-align: center;
+}
+#img__logo {
+  object-fit: contain;
+  width: 100px;
+  position: fixed;
+  left: 10px;
+  border-radius: 10%;
+}
+#img__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: contain;
+  position: fixed;
+  right: 10px;
+  cursor: pointer;
+}
+.nav_black {
+  background-color: rgba(15, 19, 19, 0.808);
+}
+.banner {
+  margin-bottom: 10px;
+  height: 500px;
+  color: white;
+  background-image: url("https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg");
+  background-position: center;
+  background-size: cover;
+  /* display: flex; */
+}
+.banner__content {
+  position: absolute;
+  top: 230px;
+  right: 30px;
+  background-color: rgba(46, 43, 43, 0.493);
+  padding: 5px;
+  border-radius: 5%;
+  text-align: center;
+}
+.banner__title {
+  padding: 5px;
+  font-size: 3rem;
+}
+.banner__description {
+  font-size: large;
+}
+#banner__gif {
+  width: 105px;
+  position: absolute;
+  top: 230px;
+  right: 295px;
+  border-radius: 10%;
+}
+.banner__bottomFade {
+  height: 150px;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+  position: relative;
+  top: 70%;
+}
+.row {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-around;
+}
+.row__image {
+  width: 200px;
+  /* padding: 5px; */
+  object-fit: contain;
+  border: 2px solid black;
+  margin: 0 10px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #111;
+  color: white;
+}

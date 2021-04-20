@@ -1,24 +1,74 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Experimenting</title>
-</head>
-<body>
-    <img src="https://blog.commlabindia.com/wp-content/uploads/2019/07/animated-gifs-corporate-training.gif" alt="Gif Image" width="500px" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="navigation">
+      <img
+        id="img__logo"
+        src="https://surveyanyplace.com/wp-content/uploads/Your-Awesome-Logo-Transparency.jpg"
+        alt="Logo"
+      />
+      <img
+        id="img__avatar"
+        src="https://i.pinimg.com/474x/82/ab/35/82ab3533ee71daf256f23c1ccf20ad6f.jpg"
+        alt="Avatar"
+      />
+    </header>
+    <main>
+      <div class="banner">
+        <img
+          id="banner__gif"
+          src="https://media.tenor.com/images/1170597818a37a7c6e3e1d4baeb6e2eb/tenor.gif"
+          alt="Hello GIF"
+        />
+        <div class="banner__content">
+          <p class="banner__title">Hello There!</p>
+          <p class="banner__description">Welcome to my page</p>
+        </div>
 
-    <div style="width: 200px;">
-        <p><img src="https://blog.commlabindia.com/wp-content/uploads/2019/07/animated-gifs-corporate-training.gif" alt="Gif Image" width="100px" style="float: right;" />Image on right</p><br>
+        <div class="banner__bottomFade"></div>
+      </div>
 
-    <p><img src="https://blog.commlabindia.com/wp-content/uploads/2019/07/animated-gifs-corporate-training.gif" alt="Gif Image" width="100px" style="float: left;" />Image on left</p>
+      <h2>Programmer Memes</h2>
+      <div class="row" id="row"></div>
+    </main>
+    <footer>Copyright@2021 Anjali Goyal</footer>
+    <script>
+      const navbar = document.getElementById("navigation");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          navbar.classList.add("nav_black");
+        } else navbar.classList.remove("nav_black");
+      });
 
-    <img src="workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
+      const row = document.getElementById("row");
+      const imgUrls = [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRer8UQQa4b7lbLqOXwqPlbX3xKkImvzFefaA&usqp=CAU",
+        "https://i.pinimg.com/236x/7f/8b/e3/7f8be3faecf153f6f0bd915fa8b513e7--kid-memes-merlin-memes.jpg",
+        "https://miro.medium.com/max/450/1*zwwiCHy8RKsudng5QRcb_g.jpeg",
+        "https://qph.fs.quoracdn.net/main-qimg-c6412d0f906280e338d044df750d6509",
+        "https://i.chzbgr.com/full/9195087104/h1C1CF3CA/programmer-meme-text-weeks-of-programming-can-save-you-hours-of-planning",
+      ];
 
-<map name="workmap">
-  <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm">
-</map>
+      let rowData = "";
 
-    </div>
-</body>
+      for (const url of imgUrls) {
+        rowData += `
+            <div class="row__item">
+            <img
+                class="row__image"
+                src="${url}"
+            />
+            </div>
+        `;
+      }
+
+      row.innerHTML = rowData;
+    </script>
+  </body>
 </html>
