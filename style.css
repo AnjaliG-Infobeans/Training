@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  overflow-x: hidden;
 }
 header {
   display: flex;
@@ -9,6 +10,7 @@ header {
   height: 50px;
   top: 0;
   padding: 10px;
+  transition: all 0.3ms ease-in;
 }
 h2 {
   padding-left: 30px;
@@ -78,9 +80,13 @@ h2 {
   top: 70%;
 }
 .row {
-  padding: 10px 30px;
+  padding: 10px 0px;
+  padding-left: 0;
   display: flex;
   justify-content: space-around;
+}
+.row__item {
+  margin-right: 10px;
 }
 .row__image {
   width: 200px;
@@ -88,7 +94,30 @@ h2 {
   object-fit: contain;
   border: 2px solid black;
   margin: 0 10px;
+  margin-left: 0;
+  transition: all 0.3ms ease-in;
 }
+.row__image:hover {
+  transform: scale(1.08);
+}
+.media {
+  display: flex;
+  align-items: center;
+  margin: 40px 0;
+  background-color: lightcyan;
+  padding: 20px;
+  text-align: center;
+  justify-content: space-around;
+}
+.media p {
+  font-size: 30px;
+}
+.media__text {
+  font-size: 40px;
+  font-style: italic;
+  color: mediumblue;
+}
+
 footer {
   position: fixed;
   bottom: 0;
