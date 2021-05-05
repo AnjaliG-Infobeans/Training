@@ -1,4 +1,29 @@
 .nav {
   height: 64px;
   background-color: #3a3537;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__logoWrapper {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+.nav__logo {
+  object-fit: contain;
+  width: 125px;
+  margin: 0 13px;
+}
+.nav__portal {
+  color: #d8d7d7;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: "Avenir Roman", "Helvetica Neue", Helvetica, Arial,
+    "Lucida Grande", sans-serif;
+}
+.nav__menuLink {
+  color: #9c9a9b;
+  margin: 25px;
 }
