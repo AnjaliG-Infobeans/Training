@@ -1,11 +1,5 @@
 * {
   margin: 0;
-}
-
-.app {
-  background-image: url("https://infobeans-design-system.web.app/images/login-bg.png");
-  height: 100vh;
-  overflow-x: hidden;
-  background-repeat: no-repeat;
-  background-size: cover;
+  font-family: "Avenir Roman", "Helvetica Neue", Helvetica, Arial,
+    "Lucida Grande", sans-serif;
 }

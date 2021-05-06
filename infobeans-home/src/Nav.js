@@ -4,17 +4,20 @@ import "./Nav.css";
 
 const Nav = () => {
   return (
-    <header className="nav">
-      <div className="nav__logoWrapper">
+    <header className="navbar">
+      <div className="navbar__logoWrapper">
         <img
-          className="nav__logo"
+          className="navbar__logo"
           src="https://infobeans-design-system.web.app/images/logo-infobeans-white.svg"
           alt="logo"
         />
-        <div className="text-portal nav__portal">Intranet Portal</div>
+        <div className="text-portal navbar__portal">Intranet Portal</div>
       </div>
-      <div className="nav__menu">
-        <i className="ibic-apps nav__menuLink"></i>
+      <div className="navbar__menu">
+        {!localStorage.email && <i className="ibic-apps navbar__menuLink"></i>}
+
+        {/* add useEffect or login, logout */}
+        {localStorage.email && <div></div>}
       </div>
     </header>
   );

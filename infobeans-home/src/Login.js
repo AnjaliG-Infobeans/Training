@@ -19,7 +19,7 @@ const Login = () => {
           name="login__email"
           placeholder="Your InfoBeans email address"
         />
-        <label className="stretch" for="login__password">
+        <label className="login__formLabel" for="login__password">
           Password <a href="#">Forgot?</a>
         </label>
         <input
