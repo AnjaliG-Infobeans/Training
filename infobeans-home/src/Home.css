@@ -1,6 +1,9 @@
 .home {
   margin: 40px 20px;
 }
+ul {
+  margin: 0;
+}
 .home__title {
   font-size: 24px;
   color: #3a3537;
@@ -18,43 +21,74 @@
 .home__more:hover {
   text-decoration: underline;
 }
-.home__jobCard {
-  display: flex !important;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
 .home__job {
   width: 330px;
-  padding: 25px 20px;
+  padding: 25px 25px;
   padding-top: 0;
   overflow: hidden;
-  border-top: 0;
+  position: relative;
+  border-top: 5px solid #ea1b3c;
 }
 .home__jobTop {
-  height: 5px;
-  background-color: #ea1b3c;
-  width: 100rem;
-  position: relative;
+  position: absolute;
   right: 20px;
 }
 .home__star > i {
   color: #ea1b3c;
-  position: relative;
-  left: 295px;
-  bottom: 18px;
+  position: absolute;
+  right: -30px;
+  top: -22px;
   font-size: 44px;
 }
 .home__star > span {
   color: white;
-  position: relative;
-  left: 262px;
-  bottom: 14px;
+  position: absolute;
+  right: -10px;
+  top: 2px;
   font-size: 16px;
   font-weight: 600;
 }
 .home__jobTitle {
   cursor: pointer;
   margin-top: 30px;
+}
+/* .home__jobCard:hover .home__jobTitle {
+  color: #ea1b3c;
+} */
+.home__jobContent {
+  color: #3a3537;
+  margin: 10px 0;
+}
+.home__jobProfile > button {
+  border-radius: 20px;
+  margin: 5px 15px 5px 0;
+  padding: 0 15px;
+  height: 30px;
+  background-color: #f2f2f2;
+  border: none;
+  color: black;
+  font-size: 14px;
+  display: inline;
+}
+.home__share {
+  color: #ea1b3c;
+  margin-top: 15px;
+  font-size: 16px;
+}
+.home__share > i {
+  padding-right: 10px;
+}
+.home__jobDetails {
+  display: flex;
+  flex-direction: column;
+}
+.home__jobDetails span {
+  margin-right: 15px;
+  font-size: 14px;
+}
+.home__jobVenue i {
+  padding-right: 5px;
+  color: #3a3537;
 }
 .home__tab {
   display: flex;

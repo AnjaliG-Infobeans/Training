@@ -30,19 +30,59 @@ const Home = () => {
           >
             Internal Job Postings
           </a>
-          <a className="home__more" href="javascript:void(0);">
+          <a className="home__more" href="#">
             <span>See More</span> <i className="ibic-arrow-right"></i>
           </a>
         </div>
 
         {/* Job tab details */}
         <div className="tab-content " id="nav-tabContent">
-          <div
-            className="tab-pane fade show active home__jobCard"
+          <ul
+            className="tab-pane fade show active home__jobCard ib-slider ib-slider-3"
             id="nav-home"
             role="tabpanel"
           >
-            <div class="card-post home__job">
+            <li class="card-post home__job">
+              <div className="home__jobTop">
+                <div className="home__star">
+                  <i className="ibic-multistar"></i> <span>$</span>
+                </div>
+              </div>
+              <div className="">
+                <h3>
+                  <a className="home__jobTitle">
+                    Senior Consultant – (Web and Mobile Application Solution
+                    Designer)
+                  </a>
+                </h3>
+              </div>
+              <div className="home__jobDetails">
+                <div className="home__jobVenue">
+                  <span>
+                    <i className="ibic-location"></i>
+                    Chennai, India
+                  </span>
+                  <span>
+                    <i className="ibic-clock"></i>8 to 10 Years
+                  </span>
+                </div>
+
+                <div className="home__jobContent">
+                  Communication with customer and internal stakeholders -
+                  Understanding customer requirements and business objectives
+                  ...
+                </div>
+                <div className="home__jobProfile">
+                  <button>UI Developer</button>
+                  <button>UI Designer</button>
+                </div>
+                <div className="home__share">
+                  <i className="ibic-share"></i>
+                  Share
+                </div>
+              </div>
+            </li>
+            <li class="card-post home__job">
               <div className="home__jobTop">
                 <div className="home__star">
                   <i className="ibic-multistar"></i> <span>$</span>
@@ -81,8 +121,13 @@ const Home = () => {
                   Share
                 </div>
               </div>
-            </div>
-            <div class="card-post home__job">
+            </li>
+            <li class="card-post home__job">
+              <div className="home__jobTop">
+                <div className="home__star">
+                  <i className="ibic-multistar"></i> <span>$</span>
+                </div>
+              </div>
               <div className="home__jobTitle">
                 <h3>
                   <a>
@@ -91,8 +136,38 @@ const Home = () => {
                   </a>
                 </h3>
               </div>
-            </div>
-            <div class="card-post home__job">
+              <div className="home__jobDetails">
+                <div className="home__jobVenue">
+                  <span>
+                    <i className="ibic-location"></i>
+                    Chennai, India
+                  </span>
+                  <span>
+                    <i className="ibic-clock"></i>8 to 10 Years
+                  </span>
+                </div>
+
+                <div className="home__jobContent">
+                  Communication with customer and internal stakeholders -
+                  Understanding customer requirements and business objectives
+                  ...
+                </div>
+                <div className="home__jobProfile">
+                  <button>UI Developer</button>
+                  <button>UI Designer</button>
+                </div>
+                <div className="home__share">
+                  <i className="ibic-share"></i>
+                  Share
+                </div>
+              </div>
+            </li>
+            <li class="card-post home__job">
+              <div className="home__jobTop">
+                <div className="home__star">
+                  <i className="ibic-multistar"></i> <span>$</span>
+                </div>
+              </div>
               <div className="home__jobTitle">
                 <h3>
                   <a>
@@ -101,8 +176,33 @@ const Home = () => {
                   </a>
                 </h3>
               </div>
-            </div>
-          </div>
+              <div className="home__jobDetails">
+                <div className="home__jobVenue">
+                  <span>
+                    <i className="ibic-location"></i>
+                    Chennai, India
+                  </span>
+                  <span>
+                    <i className="ibic-clock"></i>8 to 10 Years
+                  </span>
+                </div>
+
+                <div className="home__jobContent">
+                  Communication with customer and internal stakeholders -
+                  Understanding customer requirements and business objectives
+                  ...
+                </div>
+                <div className="home__jobProfile">
+                  <button>UI Developer</button>
+                  <button>UI Designer</button>
+                </div>
+                <div className="home__share">
+                  <i className="ibic-share"></i>
+                  Share
+                </div>
+              </div>
+            </li>
+          </ul>
           <div className="tab-pane fade" id="nav-profile" role="tabpanel">
             Profile Content
           </div>

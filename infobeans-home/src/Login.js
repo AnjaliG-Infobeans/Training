@@ -1,11 +1,31 @@
 import React from "react";
 
+import { useHistory } from "react-router";
+
 import "./Login.css";
 
+const user = {
+  email: "abc@gmail.com",
+  password: "Test@123",
+};
+
 const Login = () => {
+  // if (localStorage.email) {
+  //   history.push("/home");
+  // }
+  const history = useHistory();
+  const login = (e) => {
+    e.preventDefault();
+    const email = e.target.elements.login__email.value;
+    const password = e.target.elements.login__password.value;
+
+    if (email === user.email && password === user.password) {
+      history.push("/home");
+    }
+  };
   return (
     <div className="login">
-      <div className="login__form">
+      <form className="login__form" onSubmit={login}>
         <img
           className="login__formLogo"
           src="https://infobeans-design-system.web.app/images/logo-infobeans-black.svg"
@@ -30,7 +50,7 @@ const Login = () => {
           placeholder="Your password"
         />
         <button className="inverse">Login to Intranet Portal</button>
-      </div>
+      </form>
       <footer className="login__footer">
         &copy; Copyright 2020 InfoBeans. All Rights Reserved.
       </footer>
