@@ -1,5 +1,5 @@
 .home {
-  margin: 40px 20px;
+  margin: 40px auto;
 }
 ul {
   margin: 0;
@@ -22,7 +22,7 @@ ul {
   text-decoration: underline;
 }
 .home__job {
-  width: 330px;
+  /* min-width: 330px; */
   padding: 25px 25px;
   padding-top: 0;
   overflow: hidden;
@@ -93,5 +93,4 @@ ul {
 .home__tab {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }

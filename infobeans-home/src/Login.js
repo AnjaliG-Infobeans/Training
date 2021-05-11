@@ -20,6 +20,8 @@ const Login = () => {
     const password = e.target.elements.login__password.value;
 
     if (email === user.email && password === user.password) {
+      localStorage.email = email;
+      localStorage.password = password;
       history.push("/home");
     }
   };

@@ -8,7 +8,7 @@ const Home = () => {
   //   history.push("/login");
   // }
   return (
-    <div className="home">
+    <div className="home container">
       <h2 className="home__title">New Job Postings</h2>
 
       <div className="tabs-container">
@@ -36,13 +36,13 @@ const Home = () => {
         </div>
 
         {/* Job tab details */}
-        <div className="tab-content " id="nav-tabContent">
+        <div className="tab-content" id="nav-tabContent">
           <ul
             className="tab-pane fade show active home__jobCard ib-slider ib-slider-3"
             id="nav-home"
             role="tabpanel"
           >
-            <li class="card-post home__job">
+            <li className="card-post home__job">
               <div className="home__jobTop">
                 <div className="home__star">
                   <i className="ibic-multistar"></i> <span>$</span>
@@ -82,7 +82,7 @@ const Home = () => {
                 </div>
               </div>
             </li>
-            <li class="card-post home__job">
+            <li className="card-post home__job">
               <div className="home__jobTop">
                 <div className="home__star">
                   <i className="ibic-multistar"></i> <span>$</span>
@@ -122,7 +122,7 @@ const Home = () => {
                 </div>
               </div>
             </li>
-            <li class="card-post home__job">
+            <li className="card-post home__job">
               <div className="home__jobTop">
                 <div className="home__star">
                   <i className="ibic-multistar"></i> <span>$</span>
@@ -162,7 +162,7 @@ const Home = () => {
                 </div>
               </div>
             </li>
-            <li class="card-post home__job">
+            <li className="card-post home__job">
               <div className="home__jobTop">
                 <div className="home__star">
                   <i className="ibic-multistar"></i> <span>$</span>
