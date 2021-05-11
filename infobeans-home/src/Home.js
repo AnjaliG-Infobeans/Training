@@ -7,6 +7,10 @@ const Home = () => {
   // if (!localStorage.email) {
   //   history.push("/login");
   // }
+
+  const selectCard = (e) => {
+    // console.log(e.target.childNodes);
+  };
   return (
     <div className="home container">
       <h2 className="home__title">New Job Postings</h2>
@@ -42,15 +46,19 @@ const Home = () => {
             id="nav-home"
             role="tabpanel"
           >
-            <li className="card-post home__job">
+            <li
+              onMouseOver={selectCard}
+              className="card-post home__job"
+              id="one"
+            >
               <div className="home__jobTop">
                 <div className="home__star">
                   <i className="ibic-multistar"></i> <span>$</span>
                 </div>
               </div>
-              <div className="">
+              <div className="home__jobTitle">
                 <h3>
-                  <a className="home__jobTitle">
+                  <a>
                     Senior Consultant – (Web and Mobile Application Solution
                     Designer)
                   </a>

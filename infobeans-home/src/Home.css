@@ -1,3 +1,7 @@
+.slick-slide {
+  margin: 0px 10px;
+}
+
 .home {
   margin: 40px auto;
 }
@@ -29,6 +33,9 @@ ul {
   position: relative;
   border-top: 5px solid #ea1b3c;
 }
+.home__job:hover a {
+  color: #ea1b3c;
+}
 .home__jobTop {
   position: absolute;
   right: 20px;
@@ -58,6 +65,7 @@ ul {
 .home__jobContent {
   color: #3a3537;
   margin: 10px 0;
+  line-height: 20px;
 }
 .home__jobProfile > button {
   border-radius: 20px;
