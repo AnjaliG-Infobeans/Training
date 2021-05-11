@@ -14,10 +14,17 @@ const Nav = () => {
         <div className="text-portal navbar__portal">Intranet Portal</div>
       </div>
       <div className="navbar__menu">
-        {!localStorage.email && <i className="ibic-apps navbar__menuLink"></i>}
+        <span id="toggle-menu-header" class="ibic-menu"></span>
+        <span class="ibic-clear" id="close-menu-header"></span>
+        <ul class="menu-links">
+          <li>
+            <i class="ibic-apps"></i>
+          </li>
+        </ul>
+        {/* {!localStorage.email && <i className="ibic-apps navbar__menuLink"></i>} */}
 
         {/* add useEffect or login, logout */}
-        {localStorage.email && <div></div>}
+        {/* {localStorage.email && <div></div>} */}
       </div>
     </header>
   );
