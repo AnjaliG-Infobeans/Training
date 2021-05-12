@@ -27,7 +27,7 @@ const Login = () => {
   };
   return (
     <div className="login">
-      <form className="login__form" onSubmit={login}>
+      <form className="login__form" method="POST" onSubmit={login}>
         <img
           className="login__formLogo"
           src="https://infobeans-design-system.web.app/images/logo-infobeans-black.svg"
