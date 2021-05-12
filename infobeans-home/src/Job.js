@@ -1,6 +1,7 @@
 import React from "react";
 
-const Job = () => {
+const Job = (props) => {
+  console.log(props.job);
   return (
     <li className="card-post home__job">
       <div className="home__jobTop">
@@ -10,29 +11,26 @@ const Job = () => {
       </div>
       <div className="home__jobTitle">
         <h3>
-          <a>
-            Senior Consultant – (Web and Mobile Application Solution Designer)
-          </a>
+          <a>{props.job.title}</a>
         </h3>
       </div>
       <div className="home__jobDetails">
         <div className="home__jobVenue">
           <span>
             <i className="ibic-location"></i>
-            Chennai, India
+            {props.job.location}
           </span>
           <span>
-            <i className="ibic-clock"></i>8 to 10 Years
+            <i className="ibic-clock"></i>
+            {props.job.experience}
           </span>
         </div>
 
-        <div className="home__jobContent">
-          Communication with customer and internal stakeholders - Understanding
-          customer requirements and business objectives ...
-        </div>
+        <div className="home__jobContent">{props.job.description}</div>
         <div className="home__jobProfile">
-          <button>UI Developer</button>
-          <button>UI Designer</button>
+          {props.job.tags.map((tag) => {
+            return <button>{tag}</button>;
+          })}
         </div>
         <div className="home__share">
           <i className="ibic-share"></i>

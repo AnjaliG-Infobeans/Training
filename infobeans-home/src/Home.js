@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
+import axios from "./axios";
 import Job from "./Job";
 
 import "./Home.css";
@@ -15,6 +16,24 @@ const Home = () => {
     localStorage.clear();
     history.push("/");
   };
+
+  const [jobs, setJobs] = useState([]);
+  let myJobs = [];
+
+  useEffect(() => {
+    axios.get("/jobs").then(
+      (response) => {
+        myJobs = response.data;
+        setJobs(response.data);
+        // console.log(myJobs);
+      },
+      (error) => console.log(error)
+    );
+  }, []);
+
+  // useEffect(() => {
+  //   // setJobs(myJobs);
+  // }, [myJobs]);
 
   return (
     <div className="home container">
@@ -51,10 +70,12 @@ const Home = () => {
             id="nav-home"
             role="tabpanel"
           >
+            {jobs.map((job) => {
+              return <Job job={job} />;
+            })}
+            {/* <Job />
             <Job />
-            <Job />
-            <Job />
-            <Job />
+            <Job /> */}
           </ul>
           <div className="tab-pane fade" id="nav-profile" role="tabpanel">
             <a className="logout" onClick={logout}>

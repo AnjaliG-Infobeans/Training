@@ -6,10 +6,11 @@ import axios from "./axios";
 import "./Login.css";
 
 const Login = () => {
+  const history = useHistory();
+
   if (localStorage.email) {
     history.push("/home");
   }
-  const history = useHistory();
 
   const login = (e) => {
     e.preventDefault();

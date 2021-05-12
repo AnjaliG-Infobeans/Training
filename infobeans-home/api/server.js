@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const Mongoose = require("mongoose");
 const Users = require("./userSchema");
+const Jobs = require("./jobSchema");
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -20,6 +21,16 @@ Mongoose.connect(DB_CONNECTION_STRING, {
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
+});
+
+app.get("/jobs", (req, res) => {
+  Jobs.find({}, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
 });
 
 app.post("/login", (req, res) => {
