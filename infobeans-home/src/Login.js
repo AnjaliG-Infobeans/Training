@@ -2,28 +2,31 @@ import React from "react";
 
 import { useHistory } from "react-router";
 
+import axios from "./axios";
 import "./Login.css";
 
-const user = {
-  email: "abc@gmail.com",
-  password: "Test@123",
-};
-
 const Login = () => {
-  // if (localStorage.email) {
-  //   history.push("/home");
-  // }
+  if (localStorage.email) {
+    history.push("/home");
+  }
   const history = useHistory();
+
   const login = (e) => {
     e.preventDefault();
     const email = e.target.elements.login__email.value;
     const password = e.target.elements.login__password.value;
 
-    if (email === user.email && password === user.password) {
-      localStorage.email = email;
-      localStorage.password = password;
-      history.push("/home");
-    }
+    axios.post("/login", { email: email, password: password }).then(
+      (response) => {
+        if (response.data === email) {
+          localStorage.email = email;
+          history.push("/home");
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
   return (
     <div className="login">
@@ -33,7 +36,7 @@ const Login = () => {
           src="https://infobeans-design-system.web.app/images/logo-infobeans-black.svg"
           alt="logo"
         />
-        <label for="login__email">Email</label>
+        <label htmlFor="login__email">Email</label>
         <input
           className="text-input-placeholder"
           type="text"
@@ -41,7 +44,7 @@ const Login = () => {
           name="login__email"
           placeholder="Your InfoBeans email address"
         />
-        <label className="login__formLabel" for="login__password">
+        <label className="login__formLabel" htmlFor="login__password">
           Password <a href="#">Forgot?</a>
         </label>
         <input

@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const Mongoose = require("mongoose");
 const Users = require("./userSchema");
 
@@ -6,6 +7,7 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 app.use(express.json());
+app.use(cors());
 
 const DB_CONNECTION_STRING = "mongodb://127.0.0.1:27017/infobeans-portal";
 

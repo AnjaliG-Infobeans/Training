@@ -7,9 +7,14 @@ import "./Home.css";
 
 const Home = () => {
   let history = useHistory();
-  // if (!localStorage.email) {
-  //   history.push("/login");
-  // }
+  if (!localStorage.email) {
+    history.push("/login");
+  }
+
+  const logout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
 
   return (
     <div className="home container">
@@ -52,7 +57,9 @@ const Home = () => {
             <Job />
           </ul>
           <div className="tab-pane fade" id="nav-profile" role="tabpanel">
-            Profile Content
+            <a className="logout" onClick={logout}>
+              Logout
+            </a>
           </div>
         </div>
       </div>
