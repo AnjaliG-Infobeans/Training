@@ -1,12 +1,5 @@
-.slick-slide {
-  margin: 0px 10px;
-}
-
 .home {
   margin: 100px auto 0;
-}
-ul {
-  margin: 0;
 }
 .home__title {
   font-size: 24px;
@@ -26,7 +19,6 @@ ul {
   text-decoration: underline;
 }
 .home__job {
-  /* min-width: 330px; */
   padding: 25px 25px;
   padding-top: 0;
   overflow: hidden;
@@ -59,9 +51,9 @@ ul {
   cursor: pointer;
   margin-top: 30px;
 }
-/* .home__jobCard:hover .home__jobTitle {
-  color: #ea1b3c;
-} */
+.home__jobCard {
+  padding-left: 0;
+}
 .home__jobContent {
   color: #3a3537;
   margin: 10px 0;

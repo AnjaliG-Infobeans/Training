@@ -1,11 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import axios from "./axios";
+import Nav from "./Nav";
 import Job from "./Job";
 
 import "./Home.css";
-import Nav from "./Nav";
+
+const options = {
+  nav: true,
+  items: 4,
+  loop: true,
+  responsiveClass: true,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    960: {
+      items: 4,
+    },
+    1200: {
+      items: 4,
+    },
+  },
+};
 
 const Home = () => {
   let history = useHistory();
@@ -19,22 +43,17 @@ const Home = () => {
   };
 
   const [jobs, setJobs] = useState([]);
-  // let myJobs = [];
 
   useEffect(() => {
     axios.get("/jobs").then(
       (response) => {
-        // myJobs = response.data;
+        // jobList = response.data;
         setJobs(response.data);
         // console.log(myJobs);
       },
       (error) => console.log(error)
     );
   }, []);
-
-  // useEffect(() => {
-  //   // setJobs(myJobs);
-  // }, [myJobs]);
 
   return (
     <div className="home">
@@ -68,15 +87,13 @@ const Home = () => {
 
           {/* Job tab details */}
           <div className="tab-content" id="nav-tabContent">
-            <ul
-              className="tab-pane fade show active home__jobCard ib-slider ib-slider-3"
-              id="nav-home"
-              role="tabpanel"
-            >
+            <div className="active" id="nav-home">
+              {/* <OwlCarousel className="owl-theme" loop margin={10} nav> */}
               {jobs.map((job) => {
                 return <Job job={job} />;
               })}
-            </ul>
+              {/* </OwlCarousel> */}
+            </div>
             <div className="tab-pane fade" id="nav-profile" role="tabpanel">
               <a className="logout" onClick={logout}>
                 Logout

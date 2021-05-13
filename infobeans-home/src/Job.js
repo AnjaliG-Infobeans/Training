@@ -3,7 +3,7 @@ import React from "react";
 const Job = (props) => {
   console.log(props.job);
   return (
-    <li className="card-post home__job">
+    <div className="card-post home__job">
       <div className="home__jobTop">
         <div className="home__star">
           <i className="ibic-multistar"></i> <span>$</span>
@@ -37,7 +37,7 @@ const Job = (props) => {
           Share
         </div>
       </div>
-    </li>
+    </div>
   );
 };
 
