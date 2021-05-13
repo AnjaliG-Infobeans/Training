@@ -13,24 +13,35 @@ const Login = () => {
     history.push("/home");
   }
 
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const login = (e) => {
     e.preventDefault();
     const email = e.target.elements.login__email.value;
     const password = e.target.elements.login__password.value;
 
-    axios.post("/login", { email: email, password: password }).then(
-      (response) => {
-        if (response.data === email) {
-          localStorage.email = email;
-          history.push("/home");
-        } else {
-          alert("Invalid credentials");
+    if (!validateEmail(email)) {
+      // document.getElementById('error')
+      document.querySelector(".error_email").style.display = "block";
+    } else {
+      axios.post("/login", { email: email, password: password }).then(
+        (response) => {
+          if (response.data === email) {
+            localStorage.email = email;
+            history.push("/home");
+          } else {
+            alert("Invalid credentials");
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      );
+    }
   };
   return (
     <div className="login">
@@ -49,6 +60,9 @@ const Login = () => {
           name="login__email"
           placeholder="Your InfoBeans email address"
         />
+        <div className="error_email" id="error">
+          Enter valid email
+        </div>
         <label className="login__formLabel" htmlFor="login__password">
           Password <a href="#">Forgot?</a>
         </label>

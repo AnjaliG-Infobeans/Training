@@ -39,6 +39,12 @@
   display: flex;
   justify-content: space-between;
 }
+.error_email {
+  color: #ea1b3c;
+  font-size: small;
+  text-align: center;
+  display: none;
+}
 #login__password {
   padding: 10px;
   transition: 0.3s;
