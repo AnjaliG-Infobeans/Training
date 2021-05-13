@@ -71,7 +71,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
 }
 .navbar__logoWrapper {
@@ -105,10 +105,13 @@
   list-style: none;
   color: #9c9a9b;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   flex: 1;
   font-size: 16px;
+  padding: 0 20px;
+}
+.navbar__links > li {
   padding: 0 20px;
 }
 .navbar__links a {

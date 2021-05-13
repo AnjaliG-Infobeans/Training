@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 
 import axios from "./axios";
 import "./Login.css";
+import Nav from "./NavLogin";
 
 const Login = () => {
   const history = useHistory();
@@ -22,6 +23,8 @@ const Login = () => {
         if (response.data === email) {
           localStorage.email = email;
           history.push("/home");
+        } else {
+          alert("Invalid credentials");
         }
       },
       (error) => {
@@ -31,6 +34,7 @@ const Login = () => {
   };
   return (
     <div className="login">
+      <Nav />
       <form className="login__form" method="POST" onSubmit={login}>
         <img
           className="login__formLogo"
@@ -50,7 +54,7 @@ const Login = () => {
         </label>
         <input
           className="text-input-placeholder"
-          type="text"
+          type="password"
           id="login__password"
           name="login__password"
           placeholder="Your password"

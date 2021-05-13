@@ -3,7 +3,7 @@
 }
 
 .home {
-  margin: 100px auto 40px;
+  margin: 100px auto 0;
 }
 ul {
   margin: 0;
@@ -101,4 +101,8 @@ ul {
 .home__tab {
   display: flex;
   align-items: center;
+}
+.home__footer {
+  /* position: absolute; */
+  /* bottom: 0; */
 }

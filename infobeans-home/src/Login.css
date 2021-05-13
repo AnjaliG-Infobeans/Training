@@ -39,6 +39,11 @@
   display: flex;
   justify-content: space-between;
 }
+#login__password {
+  padding: 10px;
+  transition: 0.3s;
+  outline: 2px solid black;
+}
 .login__footer {
   position: absolute;
   bottom: 0;
