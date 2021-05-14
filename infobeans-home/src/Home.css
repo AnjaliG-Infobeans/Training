@@ -18,6 +18,10 @@
 .home__more:hover {
   text-decoration: underline;
 }
+/* .home__jobs {
+  display: flex;
+  justify-content: space-between;
+} */
 .home__job {
   padding: 25px 25px;
   padding-top: 0;
@@ -59,6 +63,9 @@
   margin: 10px 0;
   line-height: 20px;
 }
+.home__jobWrapper {
+  min-height: 290px;
+}
 .home__jobProfile > button {
   border-radius: 20px;
   margin: 5px 15px 5px 0;
@@ -95,6 +102,7 @@
   align-items: center;
 }
 .home__footer {
-  /* position: absolute; */
-  /* bottom: 0; */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

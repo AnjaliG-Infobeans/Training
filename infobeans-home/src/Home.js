@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
@@ -9,27 +8,6 @@ import Nav from "./Nav";
 import Job from "./Job";
 
 import "./Home.css";
-
-const options = {
-  nav: true,
-  items: 4,
-  loop: true,
-  responsiveClass: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-    },
-    960: {
-      items: 4,
-    },
-    1200: {
-      items: 4,
-    },
-  },
-};
 
 const Home = () => {
   let history = useHistory();
@@ -47,9 +25,7 @@ const Home = () => {
   useEffect(() => {
     axios.get("/jobs").then(
       (response) => {
-        // jobList = response.data;
         setJobs(response.data);
-        // console.log(myJobs);
       },
       (error) => console.log(error)
     );
@@ -87,13 +63,14 @@ const Home = () => {
 
           {/* Job tab details */}
           <div className="tab-content" id="nav-tabContent">
-            <div className="active" id="nav-home">
-              {/* <OwlCarousel className="owl-theme" loop margin={10} nav> */}
-              {jobs.map((job) => {
-                return <Job job={job} />;
-              })}
-              {/* </OwlCarousel> */}
-            </div>
+            {jobs && (
+              <ul className="home__jobs ib-slider ib-slider-3" id="nav-home">
+                <Job job={jobs[0]} />
+                <Job job={jobs[1]} />
+                <Job job={jobs[2]} />
+                <Job job={jobs[3]} />
+              </ul>
+            )}
             <div className="tab-pane fade" id="nav-profile" role="tabpanel">
               <a className="logout" onClick={logout}>
                 Logout
@@ -102,9 +79,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <footer className="home__footer">
+      {/* <footer className="home__footer">
         &copy; Copyright 2020 InfoBeans. All Rights Reserved.
-      </footer>
+      </footer> */}
     </div>
   );
 };
