@@ -30,8 +30,8 @@ const Login = () => {
     } else {
       axios.post("/login", { email: email, password: password }).then(
         (response) => {
-          if (response.data === email) {
-            localStorage.email = email;
+          if (response.data.token) {
+            localStorage.token = response.data.token;
             history.push("/home");
           } else {
             alert("Invalid credentials");

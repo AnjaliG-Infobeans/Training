@@ -11,7 +11,7 @@ import "./Home.css";
 
 const Home = () => {
   let history = useHistory();
-  if (!localStorage.email) {
+  if (!localStorage.token) {
     history.push("/login");
   }
 
@@ -23,12 +23,18 @@ const Home = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("/jobs").then(
-      (response) => {
-        setJobs(response.data);
-      },
-      (error) => console.log(error)
-    );
+    axios
+      .get("/jobs", {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+      .then(
+        (response) => {
+          setJobs(response.data);
+        },
+        (error) => console.log(error)
+      );
   }, []);
 
   return (
@@ -79,9 +85,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* <footer className="home__footer">
+      <footer className="home__footer">
         &copy; Copyright 2020 InfoBeans. All Rights Reserved.
-      </footer> */}
+      </footer>
     </div>
   );
 };

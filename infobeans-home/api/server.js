@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const Mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+
 const Users = require("./userSchema");
 const Jobs = require("./jobSchema");
 
@@ -19,16 +21,38 @@ Mongoose.connect(DB_CONNECTION_STRING, {
   useFindAndModify: false,
 });
 
+// Verify Token: middleware function
+const verifyToken = (req, res, next) => {
+  // Get auth header value
+  const bearerHeader = req.headers["authorization"];
+  // Check if bearer is undefined
+  if (typeof bearerHeader !== "undefined") {
+    req.token = bearerHeader.split(" ")[1];
+
+    // Next middleware
+    next();
+  } else {
+    // Forbidden
+    res.sendStatus(403);
+  }
+};
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/jobs", (req, res) => {
+app.get("/jobs", verifyToken, (req, res) => {
   Jobs.find({}, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.status(200).send(data);
+      jwt.verify(req.token, "secretkey", (err, authData) => {
+        if (err) {
+          res.sendStatus(403);
+        } else {
+          res.status(200).send(data);
+        }
+      });
     }
   });
 });
@@ -42,7 +66,10 @@ app.post("/login", (req, res) => {
         res.status(500).send(err);
       } else {
         if (data.length) {
-          res.send(data[0].email);
+          const user = data[0];
+          jwt.sign({ user }, "secretkey", (err, token) => {
+            res.send({ token: token });
+          });
         } else {
           res.send({ message: "Invalid user" });
         }
