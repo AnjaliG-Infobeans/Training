@@ -1,12 +1,68 @@
 .slick-slide {
   margin: 0px 10px;
 }
+.owl-theme {
+  position: relative;
+}
+.owl-carousel {
+  margin: 0 !important;
+}
 .owl-item {
   margin: 0 2px;
 }
 .owl-dots {
   position: relative;
-  bottom: 500px;
+  bottom: 430px;
+}
+.owl-dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 8px;
+  color: #3a3537;
+}
+.owl-dot span {
+  height: 12px !important;
+  width: 12px !important;
+}
+.owl-dot.active span,
+.owl-dot span:hover {
+  background-color: #ea1b3c !important;
+}
+.owl-nav {
+  position: absolute;
+  bottom: 72%;
+  width: 100%;
+}
+.owl-prev,
+.owl-next {
+  height: 48px;
+  width: 32px;
+  cursor: pointer;
+  background-color: #f2f2f2 !important;
+  color: #ea1b3c !important;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  position: relative;
+}
+.owl-prev span,
+.owl-next span {
+  font-size: 30px !important;
+}
+.owl-prev {
+  left: -50%;
+}
+.owl-next {
+  right: -52%;
+}
+.owl-prev:hover,
+.owl-prev:focus,
+.owl-next:hover,
+.owl-next:focus {
+  background-color: #ea1b3c !important;
+  color: white !important;
 }
 
 .home {

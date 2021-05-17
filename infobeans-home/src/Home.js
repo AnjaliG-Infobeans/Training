@@ -97,17 +97,19 @@ const Home = () => {
 
           {/* Job tab details */}
           <div className="tab-content" id="nav-tabContent">
-            {jobs.length > 0 && (
-              <OwlCarousel
-                id="owl-demo"
-                className="slider-items owl-carousel owl-theme"
-                {...options}
-              >
-                {jobs.map((job) => (
-                  <Job job={job} />
-                ))}
-              </OwlCarousel>
-            )}
+            <div className="tab-pane fade active" id="nav-home" role="tabpanel">
+              {jobs.length > 0 && (
+                <OwlCarousel
+                  id="owl-demo"
+                  className="slider-items owl-carousel owl-theme"
+                  {...options}
+                >
+                  {jobs.map((job) => (
+                    <Job job={job} />
+                  ))}
+                </OwlCarousel>
+              )}
+            </div>
             <div className="tab-pane fade" id="nav-profile" role="tabpanel">
               <a className="logout" onClick={logout}>
                 Logout
