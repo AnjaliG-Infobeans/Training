@@ -84,14 +84,13 @@
   object-fit: contain;
   width: 125px;
   margin: 0 13px;
+  cursor: pointer;
 }
 .navbar__portal {
   color: #d8d7d7;
   margin-top: 10px;
   font-weight: 600;
   font-size: 16px;
-  font-family: "Avenir Roman", "Helvetica Neue", Helvetica, Arial,
-    "Lucida Grande", sans-serif;
 }
 .navbar__menu {
   display: flex;
@@ -125,6 +124,7 @@
   padding: 18px 20px;
   color: #9c9a9b;
   height: 64px;
+  cursor: pointer;
 }
 .navbar__icon:hover {
   background-color: #ea1b3c;

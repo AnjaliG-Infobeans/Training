@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+
 import axios from "./axios";
 import Nav from "./Nav";
 import Job from "./Job";
@@ -9,6 +13,32 @@ import "./Home.css";
 
 const Home = () => {
   let history = useHistory();
+
+  const options = {
+    margin: 20,
+    responsiveClass: true,
+    nav: true,
+    loop: true,
+    autoplay: false,
+    smartSpeed: 1000,
+    dots: true,
+    navigation: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      700: {
+        items: 3,
+      },
+    },
+  };
+
   if (!localStorage.token) {
     history.push("/login");
   }
@@ -67,13 +97,16 @@ const Home = () => {
 
           {/* Job tab details */}
           <div className="tab-content" id="nav-tabContent">
-            {jobs && (
-              <ul className="home__jobs ib-slider ib-slider-3" id="nav-home">
-                <Job job={jobs[0]} />
-                <Job job={jobs[1]} />
-                <Job job={jobs[2]} />
-                <Job job={jobs[3]} />
-              </ul>
+            {jobs.length > 0 && (
+              <OwlCarousel
+                id="owl-demo"
+                className="slider-items owl-carousel owl-theme"
+                {...options}
+              >
+                {jobs.map((job) => (
+                  <Job job={job} />
+                ))}
+              </OwlCarousel>
             )}
             <div className="tab-pane fade" id="nav-profile" role="tabpanel">
               <a className="logout" onClick={logout}>

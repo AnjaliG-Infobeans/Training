@@ -1,9 +1,11 @@
 import React from "react";
 
 const Job = (props) => {
-  console.log(props.job);
+  const truncate = (str, n) =>
+    str?.length > n ? str.substr(0, n - 1) + "..." : str;
+
   return (
-    <li className="card-post home__job">
+    <div className="card-post home__job">
       {props.job && (
         <span>
           <div className="home__jobTop">
@@ -28,7 +30,9 @@ const Job = (props) => {
               </span>
             </div>
 
-            <div className="home__jobContent">{props.job.description}</div>
+            <div className="home__jobContent">
+              {truncate(props.job.description, 200)}
+            </div>
           </div>
           <div className="home__jobProfile">
             {props.job.tags.map((tag) => {
@@ -41,7 +45,7 @@ const Job = (props) => {
           </div>
         </span>
       )}
-    </li>
+    </div>
   );
 };
 
