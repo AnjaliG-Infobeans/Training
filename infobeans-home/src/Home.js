@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import axios from "./axios";
 import Nav from "./Nav";

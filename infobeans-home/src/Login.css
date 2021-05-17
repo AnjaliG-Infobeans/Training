@@ -2,10 +2,12 @@
   display: flex;
   align-self: center;
   background-image: url("https://infobeans-design-system.web.app/images/login-bg.png");
-  height: 100vh;
   overflow-x: hidden;
   background-repeat: no-repeat;
   background-size: cover;
+
+  min-height: 100vh;
+  position: relative;
 }
 .login__form {
   background-color: white;
@@ -26,8 +28,6 @@
 .login__form > label {
   margin-top: 10px;
   font-size: 16px;
-  font-family: "Avenir Roman", "Helvetica Neue", Helvetica, Arial,
-    "Lucida Grande", sans-serif;
 }
 .login__form > input {
   margin: 5px 0;
@@ -54,8 +54,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  margin-top: auto;
   background-color: transparent;
   color: #fff;
-  font-family: "Avenir Roman", "Helvetica Neue", Helvetica, Arial,
-    "Lucida Grande", sans-serif;
 }
