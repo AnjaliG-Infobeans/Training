@@ -93,6 +93,7 @@
   overflow: hidden;
   position: relative;
   border-top: 5px solid #ea1b3c;
+  width: 100%;
 }
 .home__job:hover {
   box-shadow: 0px 6px 8px rgb(0 0 0 / 20%);

@@ -96,7 +96,11 @@ const Home = () => {
 
           {/* Job tab details */}
           <div className="tab-content" id="nav-tabContent">
-            <div className="tab-pane fade active" id="nav-home" role="tabpanel">
+            <div
+              className="tab-pane fade active row"
+              id="nav-home"
+              role="tabpanel"
+            >
               {jobs.length > 0 && (
                 <OwlCarousel
                   id="owl-demo"
