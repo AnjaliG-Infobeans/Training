@@ -5,11 +5,11 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-import axios from "./axios";
+import axios from "../axios";
 import Nav from "./Nav";
 import Job from "./Job";
 
-import "./Home.css";
+import "../style/Home.css";
 
 const Home = () => {
   let history = useHistory();

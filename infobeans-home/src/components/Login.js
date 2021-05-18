@@ -2,8 +2,8 @@ import React from "react";
 
 import { useHistory } from "react-router";
 
-import axios from "./axios";
-import "./Login.css";
+import axios from "../axios";
+import "../style/Login.css";
 import Nav from "./NavLogin";
 
 const Login = () => {
