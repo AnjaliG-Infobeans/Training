@@ -22,7 +22,6 @@ const Home = () => {
     autoplay: false,
     smartSpeed: 1000,
     dots: true,
-    navigation: true,
     responsive: {
       0: {
         items: 1,

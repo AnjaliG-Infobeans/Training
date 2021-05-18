@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const Mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 const Users = require("./userSchema");
 const Jobs = require("./jobSchema");
@@ -11,10 +12,9 @@ const port = process.env.PORT || 9000;
 
 app.use(express.json());
 app.use(cors());
+dotenv.config();
 
-const DB_CONNECTION_STRING = "mongodb://127.0.0.1:27017/infobeans-portal";
-
-Mongoose.connect(DB_CONNECTION_STRING, {
+Mongoose.connect(process.env.DB_CONNECTION_STRING, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
