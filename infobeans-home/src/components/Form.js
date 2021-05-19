@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
+
 import Nav from "./Nav";
 
-import "../style/Form.css";
 import validateForm from "../validateForm";
+import axios from "../axios";
+
+import "../style/Form.css";
 
 const Form = () => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {}, [errors]);
-
-  const validateEmail = (email) => {
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -29,6 +26,12 @@ const Form = () => {
       setErrors(data);
     } else {
       const formdata = data;
+      axios.post("/form", formdata).then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => console.log(error)
+      );
     }
   };
   return (

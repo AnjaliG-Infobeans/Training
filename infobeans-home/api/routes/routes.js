@@ -55,4 +55,14 @@ router.post("/form", (req, res) => {
   });
 });
 
+router.get("/forms", (req, res) => {
+  FormContacts.find({}, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
+});
+
 module.exports = router;
