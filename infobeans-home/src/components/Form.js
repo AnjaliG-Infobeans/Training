@@ -9,8 +9,16 @@ import "../style/Form.css";
 
 const Form = () => {
   const [errors, setErrors] = useState({});
+  const [file, setFile] = useState({});
 
-  useEffect(() => {}, [errors]);
+  useEffect(() => {}, [errors, file]);
+
+  const fileUpload = (e) => {
+    setFile(e.target.files[0]);
+    if (e.target.files[0]) {
+      document.querySelector(".form__fileOkay").style.display = "block";
+    }
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -25,7 +33,20 @@ const Form = () => {
     if (data.name === "err") {
       setErrors(data);
     } else {
-      const formdata = data;
+      const formdata = new FormData();
+      formdata.append("fname", fname);
+      formdata.append("lname", lname);
+      formdata.append("email", email);
+      formdata.append("message", message);
+      formdata.append("source", file);
+      // console.log(file);
+      // axios.post("https:httpbin.org/anything", formdata).then(
+      //   (response) => {
+      //     console.log(response);
+      //   },
+      //   (error) => console.log(error)
+      // );
+
       axios.post("/form", formdata).then(
         (response) => {
           console.log(response);
@@ -45,7 +66,12 @@ const Form = () => {
           alt="logo"
         />
         <p className="form__contact">Contact Us!!</p>
-        <form method="POST" className="form__data" onSubmit={submitForm}>
+        <form
+          method="POST"
+          className="form__data"
+          encType="multipart/form-data"
+          onSubmit={submitForm}
+        >
           <div className="form__field">
             <label htmlFor="form__fname">First Name</label>
             <input
@@ -91,13 +117,16 @@ const Form = () => {
           </div>
           <div className="form__error">{errors.message}</div>
 
-          <div className="form__fileOkay">File uploaded successfully</div>
+          <div className="form__fileOkay">
+            File <strong>{file.name}</strong> uploaded successfully
+          </div>
           <div className="form__fileWrapper">
             <div className="form__field">
               <label htmlFor="form__file" className="form__customFile">
                 Attach File
               </label>
               <input
+                onChange={fileUpload}
                 type="file"
                 className="form__input"
                 id="form__file"
