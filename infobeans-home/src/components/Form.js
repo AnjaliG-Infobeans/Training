@@ -2,11 +2,18 @@ import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 
 import "../style/Form.css";
+import validateForm from "../validateForm";
 
 const Form = () => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {}, [errors]);
+
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -16,21 +23,13 @@ const Form = () => {
     const email = document.querySelector("#form__email").value;
     const message = document.querySelector("#form__msg").value;
 
-    const errors = {};
-    if (!fname) {
-      errors.fname = "First name is required";
+    const data = validateForm(fname, lname, email, message);
+
+    if (data.name === "err") {
+      setErrors(data);
+    } else {
+      const formdata = data;
     }
-    if (!lname) {
-      errors.lname = "Last name is required";
-    }
-    if (!email) {
-      errors.email = "Email is required";
-    }
-    if (!message) {
-      errors.message = "Message is required";
-    }
-    // console.log(errors);
-    setErrors(errors);
   };
   return (
     <div className="form">
