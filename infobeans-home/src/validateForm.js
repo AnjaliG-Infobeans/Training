@@ -25,7 +25,6 @@ const validateForm = (fname, lname, email, message) => {
     errors.message = "Message is required";
   } else {
     formdata = {
-      name: "data",
       fname,
       lname,
       email,

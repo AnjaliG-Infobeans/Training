@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const Users = require("../model/userSchema");
 const Jobs = require("../model/jobSchema");
+const FormContacts = require("../model/contactSchema");
 
 const auth = require("../config/auth");
 const router = express.Router();
@@ -42,6 +43,16 @@ router.post("/login", (req, res) => {
       }
     }
   );
+});
+
+router.post("/form", (req, res) => {
+  FormContacts.create(req.body, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
+  });
 });
 
 module.exports = router;
