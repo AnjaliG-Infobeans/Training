@@ -38,7 +38,7 @@ const Form = () => {
       formdata.append("lname", lname);
       formdata.append("email", email);
       formdata.append("message", message);
-      formdata.append("source", file);
+      formdata.append("file", file);
       // console.log(file);
       // axios.post("https:httpbin.org/anything", formdata).then(
       //   (response) => {

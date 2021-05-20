@@ -82,16 +82,19 @@ router.post("/login", (req, res) => {
   );
 });
 
-router.post("/form", upload.single("source"), (req, res) => {
+router.post("/form", upload.single("file"), (req, res) => {
   console.log(req.body);
   console.log(req.file);
-  // FormContacts.create(req.body, (err, data) => {
-  //   if (err) {
-  //     res.status(500).send(err);
-  //   } else {
-  //     res.status(201).send(data);
-  //   }
-  // });
+
+  const formData = req.body;
+  formData.source = req.file.path;
+  FormContacts.create(formData, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
+  });
 });
 
 router.get("/forms", (req, res) => {
