@@ -83,11 +83,8 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/form", upload.single("file"), (req, res) => {
-  console.log(req.body);
-  console.log(req.file);
-
   const formData = req.body;
-  formData.source = req.file.path;
+  formData.file = req.file.path;
   FormContacts.create(formData, (err, data) => {
     if (err) {
       res.status(500).send(err);

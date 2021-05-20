@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import Nav from "./Nav";
 
@@ -8,15 +9,41 @@ import axios from "../axios";
 import "../style/Form.css";
 
 const Form = () => {
+  let history = useHistory();
+
   const [errors, setErrors] = useState({});
   const [file, setFile] = useState({});
 
   useEffect(() => {}, [errors, file]);
 
+  const getExtention = (filename) => {
+    const parts = filename.split(".");
+    return parts[parts.length - 1];
+  };
+  const validateFileType = (filename) => {
+    console.log(filename);
+    const ext = getExtention(filename);
+
+    switch (ext.toLowerCase()) {
+      case "jpeg":
+      case "png":
+      case "pdf":
+        return true;
+      default:
+        return false;
+    }
+  };
   const fileUpload = (e) => {
-    setFile(e.target.files[0]);
-    if (e.target.files[0]) {
+    // setFile(e.target.files[0]);
+    if (e.target.files[0].name && validateFileType(e.target.files[0].name)) {
       document.querySelector(".form__fileOkay").style.display = "block";
+      document.querySelector(".form__fileInvalid").style.display = "none";
+    } else if (
+      e.target.files[0].name &&
+      !validateFileType(e.target.files[0].name)
+    ) {
+      document.querySelector(".form__fileInvalid").style.display = "block";
+      document.querySelector(".form__fileOkay").style.display = "none";
     }
   };
 
@@ -39,21 +66,22 @@ const Form = () => {
       formdata.append("email", email);
       formdata.append("message", message);
       formdata.append("file", file);
-      // console.log(file);
-      // axios.post("https:httpbin.org/anything", formdata).then(
-      //   (response) => {
-      //     console.log(response);
-      //   },
-      //   (error) => console.log(error)
-      // );
 
       axios.post("/form", formdata).then(
         (response) => {
           console.log(response);
+          if (response.status === 201) {
+            document.querySelector(".form__okay").click();
+            document.querySelector(".form__okay").disabled = true;
+          }
         },
         (error) => console.log(error)
       );
     }
+  };
+
+  const backHome = () => {
+    history.push("/");
   };
   return (
     <div className="form">
@@ -120,6 +148,9 @@ const Form = () => {
           <div className="form__fileOkay">
             File <strong>{file.name}</strong> uploaded successfully
           </div>
+          <div className="form__fileInvalid">
+            File <strong>{file.name}</strong> not supported
+          </div>
           <div className="form__fileWrapper">
             <div className="form__field">
               <label htmlFor="form__file" className="form__customFile">
@@ -136,6 +167,33 @@ const Form = () => {
             <button className="form__submit">Send Message</button>
           </div>
         </form>
+      </div>
+
+      <button
+        className="button small open-modal form__okay"
+        data-target="#modal"
+      >
+        Hidden button to open Popup
+      </button>
+
+      <div className="modal" id="modal">
+        <div className="modal-container">
+          <div className="modal-header">
+            <h3>Form Submitted Successfully</h3>
+            <i onClick={backHome} className="ibic-clear close-modal"></i>
+          </div>
+          <div className="modal-content">
+            <p>
+              Your query has successfully been submitted! Kindly check your
+              registered email for confirmation.
+            </p>
+          </div>
+          <div className="modal-footer">
+            <button onClick={backHome} className="button secondary close-modal">
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
