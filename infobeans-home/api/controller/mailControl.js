@@ -6,7 +6,6 @@ const transporter = require("../config/mail");
 dotenv.config();
 
 const createMail = (data) => {
-  //   console.log(transporter);
   const mailOptions = {
     from: process.env.USER_EMAIL,
     to: admins,
