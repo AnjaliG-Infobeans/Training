@@ -2,6 +2,9 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 
+const transporter = require("../config/mail");
+const mailer = require("../controller/mailControl");
+
 /* How we want to store our multer file */
 
 // binary data
@@ -21,6 +24,7 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/jpg" ||
     file.mimetype === "image/png" ||
     file.mimetype === "application/pdf"
   ) {
@@ -85,13 +89,14 @@ router.post("/login", (req, res) => {
 router.post("/form", upload.single("file"), (req, res) => {
   const formData = req.body;
   formData.file = req.file.path;
-  FormContacts.create(formData, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(data);
-    }
-  });
+
+  // FormContacts.create(formData, (err, data) => {
+  //   if (err) {
+  //     res.status(500).send(err);
+  //   } else {
+  //     res.status(201).send(data);
+  //   }
+  // });
 });
 
 router.get("/forms", (req, res) => {
@@ -99,6 +104,11 @@ router.get("/forms", (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
+      if (!mailer(data)) {
+        res
+          .status(500)
+          .send({ message: "Something went wrong. Please try again" });
+      }
       res.status(200).send(data);
     }
   });
