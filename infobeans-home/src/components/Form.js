@@ -57,7 +57,6 @@ const Form = () => {
 
       axios.post("/form", formdata).then(
         (response) => {
-          console.log(response);
           if (response.status === 201) {
             document.querySelector(".form__okay").click();
             document.querySelector(".form__okay").disabled = true;

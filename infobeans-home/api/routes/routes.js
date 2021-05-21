@@ -94,7 +94,8 @@ router.post("/form", upload.single("file"), (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      mailer(data);
+      mailer(data, "admin");
+      mailer(data, "user");
       res.status(201).send(data);
     }
   });
