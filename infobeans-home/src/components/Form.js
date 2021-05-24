@@ -68,7 +68,7 @@ const Form = () => {
   };
 
   const backHome = () => {
-    history.push("/");
+    history.push("/submissions");
   };
 
   return (

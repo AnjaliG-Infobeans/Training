@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import axios from "../axios";
 
-import "../style/Submissions.css";
-
 const Submissions = () => {
   let [forms, setForms] = useState([]);
 
@@ -17,11 +15,17 @@ const Submissions = () => {
     );
   }, []);
 
+  const truncate = (str, n) =>
+    str?.length > n ? str.substr(0, n - 1) + "..." : str;
+
   return (
-    <div className="submissions">
-      <h1>All Submissions</h1>
+    <div className="submissions container-fluid">
+      <h1 style={{ textAlign: "center" }}>All Submissions</h1>
       {forms.length > 0 && (
-        <table className="submissions__table data-table row-border">
+        <table
+          className="data-table row-border"
+          style={{ overflowWrap: "anywhere" }}
+        >
           <thead>
             <tr>
               <th>User Name</th>
@@ -34,15 +38,19 @@ const Submissions = () => {
           <tbody>
             {forms.map((form) => (
               <tr>
-                <td>
+                <td style={{ padding: "0 15px" }}>
                   {form.fname} {form.lname}
                 </td>
-                <td>
+                <td style={{ padding: "0 15px" }}>
                   <a href={`mailto:${form.email}`}>{form.email}</a>
                 </td>
-                <td>{form.message}</td>
-                <td className="actions">
-                  <a href={form.file}>{form.file}</a>
+                <td style={{ padding: "0 15px" }}>
+                  {truncate(form.message, 100)}
+                </td>
+                <td>
+                  <a target="_blank" href={form.file} rel="noreferrer">
+                    {form.file}
+                  </a>
                 </td>
               </tr>
             ))}
