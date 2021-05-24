@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 
 import Nav from "./Nav";
 
-import validateForm from "../validateForm";
+import validateForm from "../utils/validateForm";
+import validateFileType from "../utils/validateFile";
 import axios from "../axios";
 
 import "../style/Form.css";
@@ -16,34 +17,21 @@ const Form = () => {
 
   useEffect(() => {}, [errors, file]);
 
-  const getExtention = (filename) => {
-    const parts = filename.split(".");
-    return parts[parts.length - 1];
-  };
-  const validateFileType = (filename) => {
-    console.log(filename);
-    const ext = getExtention(filename);
-
-    switch (ext.toLowerCase()) {
-      case "jpeg":
-      case "png":
-      case "pdf":
-        return true;
-      default:
-        return false;
-    }
-  };
   const fileUpload = (e) => {
-    // setFile(e.target.files[0]);
+    const fileokay = document.querySelector(".form__fileOkay");
+    const fileinvalid = document.querySelector(".form__fileInvalid");
+
+    setFile(e.target.files[0]);
+
     if (e.target.files[0].name && validateFileType(e.target.files[0].name)) {
-      document.querySelector(".form__fileOkay").style.display = "block";
-      document.querySelector(".form__fileInvalid").style.display = "none";
+      fileokay.style.display = "block";
+      fileinvalid.style.display = "none";
     } else if (
       e.target.files[0].name &&
       !validateFileType(e.target.files[0].name)
     ) {
-      document.querySelector(".form__fileInvalid").style.display = "block";
-      document.querySelector(".form__fileOkay").style.display = "none";
+      fileinvalid.style.display = "block";
+      fileokay.style.display = "none";
     }
   };
 
@@ -69,7 +57,6 @@ const Form = () => {
 
       axios.post("/form", formdata).then(
         (response) => {
-          console.log(response);
           if (response.status === 201) {
             document.querySelector(".form__okay").click();
             document.querySelector(".form__okay").disabled = true;
@@ -81,8 +68,9 @@ const Form = () => {
   };
 
   const backHome = () => {
-    history.push("/");
+    history.push("/submissions");
   };
+
   return (
     <div className="form">
       <Nav />
