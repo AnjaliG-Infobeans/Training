@@ -2,10 +2,10 @@ const multer = require("multer");
 
 /* How we want to store our multer file */
 
-// binary data
+// Binary data
 // const upload = multer({ dest: "./uploads/" });
 
-// disk storage
+// Disk storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads");
@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
   },
 });
 
-// only store certain file types
+// Store only the file formats mentioned below, skip others
 const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === "image/jpeg" ||
@@ -32,7 +32,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5, // max 5 MB
+    fileSize: 1024 * 1024 * 5, // Max 5 MB allowed
   },
   fileFilter,
 });

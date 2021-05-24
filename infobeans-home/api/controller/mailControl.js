@@ -7,8 +7,10 @@ const newMail = require("../config/createMail");
 dotenv.config();
 
 const createMail = async (data, role) => {
+  // Get mail details: User or Admin
   const mailOptions = await newMail(data, role, admins);
 
+  // Shoot mail to relevant receipients
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
       return err;

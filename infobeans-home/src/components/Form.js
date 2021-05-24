@@ -17,6 +17,9 @@ const Form = () => {
 
   useEffect(() => {}, [errors, file]);
 
+  /*
+   * On file upload, display if file format is acceptable or not
+   */
   const fileUpload = (e) => {
     const fileokay = document.querySelector(".form__fileOkay");
     const fileinvalid = document.querySelector(".form__fileInvalid");
@@ -35,6 +38,12 @@ const Form = () => {
     }
   };
 
+  /*
+   * On form submit
+   * Validate Form
+   * Display errors, if any
+   * If form okay, send request to API
+   */
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -157,6 +166,7 @@ const Form = () => {
         </form>
       </div>
 
+      {/* Hidden button to activate popup */}
       <button
         className="button small open-modal form__okay"
         data-target="#modal"
@@ -164,6 +174,7 @@ const Form = () => {
         Hidden button to open Popup
       </button>
 
+      {/* Popup, opens when form submitted successfully */}
       <div className="modal" id="modal">
         <div className="modal-container">
           <div className="modal-header">

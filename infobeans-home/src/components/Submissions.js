@@ -5,22 +5,24 @@ import axios from "../axios";
 const Submissions = () => {
   let [forms, setForms] = useState([]);
 
+  // Get all submissions once
   useEffect(() => {
     axios.get("/forms").then(
       (res) => {
         setForms(res.data);
-        console.log(res);
       },
       (err) => console.log(err)
     );
   }, []);
 
+  // Trauncate text to desired length, for display
   const truncate = (str, n) =>
     str?.length > n ? str.substr(0, n - 1) + "..." : str;
 
   return (
     <div className="submissions container-fluid">
       <h1 style={{ textAlign: "center" }}>All Submissions</h1>
+      {/* If submitted forms are available */}
       {forms.length > 0 && (
         <table
           className="data-table row-border"
@@ -57,6 +59,7 @@ const Submissions = () => {
           </tbody>
         </table>
       )}
+      {/* If no forms have been submitted yet */}
       {forms.length === 0 && <p>Sorry, no entry available</p>}
     </div>
   );
