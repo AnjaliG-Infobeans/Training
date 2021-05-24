@@ -30,7 +30,6 @@ router.get("/jobs", auth, (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  // res.send(req.body);
   Users.find(
     { email: req.body.email, password: req.body.password },
     (err, data) => {
@@ -56,8 +55,6 @@ router.post("/form", upload.single("file"), (req, res) => {
   const url = `http://localhost:${port}`;
 
   formData.file = `${url}/${req.file.path}`.replace("\\", "/");
-
-  // console.log(formData.file);
   // http://localhost:9000/uploads/1621608183857-Screenshot.PNG
 
   FormContacts.create(formData, (err, data) => {
